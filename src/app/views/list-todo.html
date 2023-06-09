@@ -1,0 +1,13 @@
+<div class="content__box content__box-list" *ngIf="todoListService.todoList.length > 0" cdkDropList (cdkDropListDropped)="onDrop($event)">
+    <div class="content__box-list-item" *ngFor="let todo of todoListService.todoList" (click)="toggleCheckbox(todo)" cdkDrag>
+        <input type="checkbox"  >
+        <span class="check" [ngClass]="{'todo__checkbox-done': todo.checked}"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></span>
+        <label [ngClass]="{'todo__label-done': todo.checked}">{{ todo.label }}</label>
+        <span class="remove" (click)="removeTodo(todo)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></span>
+        <br>
+    </div>
+    <div class="content__box-list-bottom">
+        <p>{{ todoListService.todosRemaining }} items left</p>
+        <p class="content__box-list-bottom-remove" (click)="removeCompleted()">Clear Completed</p>
+    </div>
+</div>

@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todo-app';
+  title:string = 'TODO';
+  currentIconSrc: string = '../assets/img/icon-sun.svg';
+  secondaryIconSrc: string = '../assets/img/icon-moon.svg';
+  auxIconSrc: string = "";
+
+  toggleMode(){
+    // Change Icon moon/sun
+    this.auxIconSrc = this.currentIconSrc;
+    this.currentIconSrc = this.secondaryIconSrc;
+    this.secondaryIconSrc = this.auxIconSrc;
+
+    //Change global styles
+    document.body.classList.toggle('dark-theme');
+  }
 }
