@@ -15,19 +15,20 @@ export class AddItemComponent{
 	constructor(private todoListService: TodoListService) {}
   
 	addTodo() {
-	  if (this.newTodo.trim() !== '') {
+		if (this.newTodo.trim() !== '') {
 
-		this.newObjectTodo = { 
-			id: this.id, 
-			label: this.newTodo,
-			checked: false 
-		};
-		this.todoListService.todoList.push(this.newObjectTodo);
+			this.newObjectTodo = { 
+				id: this.id, 
+				label: this.newTodo,
+				checked: false 
+			};
+			this.todoListService.todoList.push(this.newObjectTodo);
 
-		this.newTodo = '';
-		this.id++;
-		
-		this.todoListService.todosRemaining++;
-	  }
+			this.newTodo = '';
+			this.id++;
+
+			this.todoListService.updateItemsRemaining();
+		}
 	}
+	
 }

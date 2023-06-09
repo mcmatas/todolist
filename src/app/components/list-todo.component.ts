@@ -16,20 +16,22 @@ export class ListTodoComponent {
 	toggleCheckbox(todo: any) {
 		// Lógica para cambiar el estado del checkbox
 		todo.checked = !todo.checked;
+
+		this.todoListService.updateItemsRemaining();
 	}
 
 	removeTodo(todo: any) {
 		let indexToRemove = this.todoListService.todoList.findIndex(item => item.id === todo.id);
 		this.todoListService.todoList.splice(indexToRemove, 1);
-		
-		this.todoListService.todosRemaining--;
+
+		this.todoListService.updateItemsRemaining();
 	}
 
 	removeCompleted() {
 		this.todoListService.todoListOriginal = this.todoListService.todoListOriginal.filter(item => item.checked === false);
 		this.todoListService.todoList = this.todoListService.todoListOriginal;
 
-		this.todoListService.todosRemaining = this.todoListService.todoList.length;
+		this.todoListService.updateItemsRemaining();
 	}
 
 	onDrop(event: CdkDragDrop<string[]>) {

@@ -14,7 +14,7 @@ export class StatusTodoComponent{
 	}
 
 	showAll() {
-		this.todoListService.todoList = this.todoListService.todoListOriginal
+		this.todoListService.todoList = this.todoListService.todoListOriginal;
 	}
 
 	showActive() {
